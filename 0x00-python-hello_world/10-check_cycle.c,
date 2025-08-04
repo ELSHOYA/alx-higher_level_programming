@@ -1,0 +1,17 @@
+#include "lists.h"
+
+int check_cycle(listint_t *list)
+{
+    listint_t *slow = list;
+    listint_t *fast = list;
+
+    while (fast && fast->next)
+    {
+        slow = slow->next;          // خطوة واحدة
+        fast = fast->next->next;    // خطوتين
+
+        if (slow == fast)           // التقيا -> دورة موجودة
+            return (1);
+    }
+    return (0);  // انتهى اللوب بدون تقاطع -> لا دورة
+}
